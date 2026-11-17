@@ -1,0 +1,13 @@
+{
+  "version": "synthetic-only-v1",
+  "creators": [
+    {
+      "alias": "Fixture creator",
+      "wallet": "Vote111111111111111111111111111111111111111",
+      "method": "wallet-challenge",
+      "evidenceRef": "synthetic:fixture-only",
+      "verifiedAtMs": 1699999990000,
+      "activeAtMs": 1699999990000
+    }
+  ]
+}

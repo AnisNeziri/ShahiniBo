@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "mode": "paper",
+  "database": "../data/demo.sqlite",
+  "capture": "../data/demo-feed.jsonl",
+  "allowlist": "demo-allowlist.json",
+  "feed": {
+    "provider": "solana-rpc",
+    "rpcEnv": "SOLANA_RPC_URL",
+    "wsEnv": "SOLANA_WS_URL",
+    "staleMs": 15000,
+    "maxQueue": 4096,
+    "backlogSlots": 128,
+    "hydrationDeadlineMs": 3000
+  },
+  "strategy": {
+    "startingLamports": "1000000000",
+    "spendLamports": "10000000",
+    "maxExposureLamports": "25000000",
+    "dailyLossLamports": "30000000",
+    "networkFeeLamports": "5000",
+    "priorityFeeLamports": "1000",
+    "failedFeeLamports": "6000",
+    "maxOpenPositions": 2,
+    "takeProfitBps": 2000,
+    "stopLossBps": 1000,
+    "timeExitMs": 60000,
+    "maxLaunchAgeMs": 5000,
+    "maxStateAgeMs": 15000,
+    "entryImpactBps": 300,
+    "exitImpactBps": 500,
+    "slippageBps": 150,
+    "maxVenueFeeBps": 200,
+    "maxAttempts": 3,
+    "retryDelayMs": 1500,
+    "delayMs": {
+      "detection": 100,
+      "decision": 50,
+      "submission": 100,
+      "landing": 400
+    }
+  }
+}

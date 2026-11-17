@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ShahiniBot enabled live policy",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "mode": {
+      "const": "live"
+    },
+    "enabled": {
+      "const": true
+    },
+    "database": {
+      "type": "string",
+      "pattern": "\\.live\\.sqlite$"
+    },
+    "keypairPath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wallet": {
+      "type": "string",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+    },
+    "genesisHash": {
+      "type": "string",
+      "pattern": "^[1-9A-HJ-NP-Za-km-z]{20,50}$"
+    },
+    "allowlist": {
+      "type": "string",
+      "minLength": 1
+    },
+    "feed": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rpcEnv": {
+          "type": "string",
+          "minLength": 1
+        },
+        "wsEnv": {
+          "type": "string",
+          "minLength": 1
+        },
+        "staleMs": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 300000
+        },
+        "hydrationDeadlineMs": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 60000
+        },
+        "backlogSlots": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 256
+        },
+        "maxQueue": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "launchesOnly": {
+          "const": false
+        }
+      },
+      "required": [
+        "provider",
+        "rpcEnv"
+      ]
+    },
+    "rpcTimeoutMs": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 15000
+    },
+    "feeRecipients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+      }
+    },
+    "buybackRecipients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[1-9A-HJ-NP-Za-km-z]{32,44}$"
+      }
+    },
+    "caps": {
+      "type": "object",
+      "properties": {
+        "maxWalletLamports": {
+          "type": "string",
+          "pattern": "^[0-9]{1,16}$"
+        },
+        "maxEntryLamports": {
+          "type": "string",
+          "pattern": "^[0-9]{1,16}$"
+        },
+        "maxExposureLamports": {
+          "type": "string",
+          "pattern": "^[0-9]{1,16}$"
+        },
+        "maxNetworkFeeLamports": {
+          "type": "string",
+          "pattern": "^[0-9]{1,16}$"
+        },
+        "maxAccountDepositLamports": {
+          "type": "string",
+          "pattern": "^[0-9]{1,16}$"
+        },
+        "dailyLossLamports": {
+          "type": "string",
+          "pattern": "^[0-9]{1,16}$"
+        },
+        "maxOpenPositions": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "maxBroadcasts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "maxVenueFeeBps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9999
+        },
+        "maxEntryImpactBps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9999
+        },
+        "maxExitImpactBps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9999
+        },
+        "computeUnitLimit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1400000
+        },
+        "microLamportsPerUnit": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "maxWalletLamports",
+        "maxEntryLamports",
+        "maxExposureLamports",
+        "maxNetworkFeeLamports",
+        "maxAccountDepositLamports",
+        "dailyLossLamports",
+        "maxOpenPositions",
+        "maxBroadcasts",
+        "maxVenueFeeBps",
+        "maxEntryImpactBps",
+        "maxExitImpactBps",
+        "computeUnitLimit",
+        "microLamportsPerUnit"
+      ]
+    },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "spendLamports": {
+          "type": "string",
+          "pattern": "^[0-9]{1,16}$"
+        },
+        "takeProfitBps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000
+        },
+        "stopLossBps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "timeExitMs": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 86400000
+        },
+        "maxLaunchAgeMs": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 60000
+        },
+        "slippageBps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9999
+        },
+        "maxExitAttempts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "retryDelayMs": {
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 60000
+        },
+        "exitOrderTtlMs": {
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 30000
+        },
+        "exits": {
+          "$ref": "./exit-policy.schema.json"
+        }
+      },
+      "required": [
+        "spendLamports",
+        "timeExitMs",
+        "maxLaunchAgeMs",
+        "slippageBps",
+        "maxExitAttempts",
+        "retryDelayMs",
+        "exitOrderTtlMs"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "exits"
+          ]
+        },
+        {
+          "required": [
+            "takeProfitBps",
+            "stopLossBps"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "mode",
+    "enabled",
+    "database",
+    "keypairPath",
+    "wallet",
+    "genesisHash",
+    "allowlist",
+    "feed",
+    "rpcTimeoutMs",
+    "feeRecipients",
+    "buybackRecipients",
+    "caps",
+    "rules"
+  ]
+}

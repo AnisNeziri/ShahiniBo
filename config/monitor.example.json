@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "mode": "monitor",
+  "database": "../data/monitor.sqlite",
+  "capture": "../data/monitor-feed.jsonl",
+  "feed": {
+    "provider": "solana-rpc",
+    "rpcEnv": "SOLANA_RPC_URL",
+    "wsEnv": "SOLANA_WS_URL",
+    "staleMs": 15000,
+    "maxQueue": 4096,
+    "backlogSlots": 128,
+    "hydrationDeadlineMs": 3000
+  }
+}

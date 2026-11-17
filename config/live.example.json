@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "mode": "live",
+  "enabled": false,
+  "database": "/path/to/private-data/shahinibot.live.sqlite",
+  "keypairPath": "/path/outside/repository/dedicated-wallet.json",
+  "wallet": null,
+  "genesisHash": null,
+  "allowlist": "creators.private.json",
+  "feed": {
+    "provider": "dedicated-live-provider",
+    "rpcEnv": "LIVE_SOLANA_RPC_URL",
+    "wsEnv": "LIVE_SOLANA_WS_URL",
+    "staleMs": 15000,
+    "hydrationDeadlineMs": 3000,
+    "backlogSlots": 128,
+    "maxQueue": 4096
+  },
+  "rpcTimeoutMs": 2500,
+  "feeRecipients": [],
+  "buybackRecipients": [],
+  "caps": {
+    "maxWalletLamports": null,
+    "maxEntryLamports": null,
+    "maxExposureLamports": null,
+    "maxNetworkFeeLamports": null,
+    "maxAccountDepositLamports": null,
+    "dailyLossLamports": null,
+    "maxOpenPositions": null,
+    "maxBroadcasts": null,
+    "maxVenueFeeBps": null,
+    "maxEntryImpactBps": null,
+    "maxExitImpactBps": null,
+    "computeUnitLimit": null,
+    "microLamportsPerUnit": null
+  },
+  "rules": {
+    "spendLamports": null,
+    "takeProfitBps": null,
+    "stopLossBps": null,
+    "timeExitMs": null,
+    "maxLaunchAgeMs": null,
+    "slippageBps": null,
+    "maxExitAttempts": null,
+    "retryDelayMs": null,
+    "exitOrderTtlMs": null
+  }
+}

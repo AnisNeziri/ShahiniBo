@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>ShahiniBot · Run dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="wordmark"><span class="mark" aria-hidden="true">S</span><span>Shahini<span class="wordmark-muted">Bot</span></span></div>
+      <div class="status-bar">
+        <span class="tag mode" id="mode">Loading mode</span>
+        <span class="tag" id="connection" data-tone="amber" role="status"><span class="dot" aria-hidden="true"></span><span>Connecting</span></span>
+        <span class="tag feed-status" id="feed-status" data-tone="muted"><span class="dot" aria-hidden="true"></span><span>Feed unknown</span></span>
+        <span class="read-only">Read only</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="page-heading">
+      <div>
+        <h1>Run dashboard</h1>
+        <p id="run-caption">Waiting for a ledger snapshot</p>
+      </div>
+      <div class="clock"><span>LAST UPDATE</span><time id="latest-update">—</time></div>
+    </div>
+
+    <section class="performance" aria-labelledby="performance-title">
+      <div class="performance-heading">
+        <h2 id="performance-title">Run performance</h2>
+        <p id="performance-caption">Costs and fills from the run report</p>
+      </div>
+      <div class="metrics" id="metrics">
+        <div class="metric"><span>Realized net</span><strong>—</strong></div>
+        <div class="metric"><span>Net / eligible launch</span><strong>—</strong></div>
+        <div class="metric"><span>Max drawdown</span><strong>—</strong></div>
+        <div class="metric"><span>Entry fills</span><strong>—</strong></div>
+        <div class="metric"><span>Exit fills / failed</span><strong>—</strong></div>
+      </div>
+    </section>
+
+    <div class="columns">
+      <section class="panel activity" aria-labelledby="activity-title">
+        <div class="panel-heading">
+          <h2 id="activity-title">Activity <span id="activity-count" class="tag count">0</span></h2>
+          <button id="clear-filters" type="button" class="quiet-button" disabled>Clear filters</button>
+        </div>
+        <form class="filters" id="filters" role="search" aria-label="Filter activity" autocomplete="off">
+          <label class="field"><span>Mint</span><input id="filter-mint" type="search" placeholder="Mint address" spellcheck="false"></label>
+          <label class="field"><span>Creator</span><input id="filter-creator" type="search" placeholder="Wallet or alias" spellcheck="false"></label>
+          <label class="field"><span>Event type</span><select id="filter-type"><option value="">All events</option></select></label>
+        </form>
+        <div id="events" class="events" role="list" aria-label="Recorded activity">
+          <p class="empty">Waiting for the first ledger snapshot.</p>
+        </div>
+        <div class="feed-footer" id="feed-footer">The dashboard displays persisted events.</div>
+      </section>
+
+      <section class="panel coin" aria-labelledby="coin-title">
+        <div class="panel-heading">
+          <h2 id="coin-title">Coin detail</h2>
+          <span id="coin-status" class="tag count" hidden></span>
+        </div>
+        <div id="coin-detail" class="coin-detail">
+          <p class="empty">Select a mint from Activity or Open positions to inspect the decision evidence.</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel positions" aria-labelledby="positions-title">
+      <div class="panel-heading">
+        <h2 id="positions-title">Open positions <span id="position-count" class="tag count">0</span></h2>
+        <span id="positions-caption" class="muted-small">Quantities in token base units</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption class="sr-only">Open positions, estimated net liquidation and exit ladder state</caption>
+          <thead><tr><th scope="col">Mint</th><th scope="col">Original / remaining</th><th scope="col">Realized net</th><th scope="col">Net liquidation</th><th scope="col">Exit ladder</th></tr></thead>
+          <tbody id="positions"><tr><td colspan="5"><p class="empty">No open positions.</p></td></tr></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="panel submissions" aria-labelledby="submissions-title">
+      <div class="panel-heading">
+        <h2 id="submissions-title">Pending &amp; failed submissions <span id="submission-count" class="tag count">0</span></h2>
+      </div>
+      <div id="submissions"><p class="empty">No pending or failed submissions.</p></div>
+    </section>
+
+    <footer class="metadata"><span>ShahiniBot</span><span>Local dashboard</span></footer>
+  </main>
+</body>
+</html>

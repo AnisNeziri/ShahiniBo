@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "mode": "paper",
+  "capture": "../data/ladder-feed.jsonl",
+  "allowlist": "demo-allowlist.json",
+  "feed": {
+    "provider": "solana-rpc"
+  },
+  "strategy": {
+    "startingLamports": "1000000000",
+    "spendLamports": "100000000",
+    "maxExposureLamports": "210000000",
+    "dailyLossLamports": "110000000",
+    "networkFeeLamports": "5000",
+    "priorityFeeLamports": "1000",
+    "failedFeeLamports": "6000",
+    "tokenAccountRentLamports": "2039280",
+    "maxOpenPositions": 2,
+    "takeProfitBps": 2000,
+    "stopLossBps": 1000,
+    "timeExitMs": 60000,
+    "maxLaunchAgeMs": 5000,
+    "maxStateAgeMs": 15000,
+    "entryImpactBps": 300,
+    "exitImpactBps": 500,
+    "slippageBps": 150,
+    "maxVenueFeeBps": 200,
+    "maxAttempts": 3,
+    "retryDelayMs": 200,
+    "delayMs": {
+      "detection": 50,
+      "decision": 100,
+      "submission": 100,
+      "landing": 200
+    },
+    "riskPolicy": {
+      "version": "fixture-risk-v1",
+      "maxRoundTripLossBps": 500
+    },
+    "exits": {
+      "version": "fixture-price-v1",
+      "takeProfits": [
+        {
+          "label": "TP1",
+          "unit": "net_pnl_percent",
+          "value": "20",
+          "sellPercent": "25"
+        },
+        {
+          "label": "TP2",
+          "unit": "net_pnl_sol",
+          "value": "0.02",
+          "sellPercent": "25"
+        },
+        {
+          "label": "TP3",
+          "unit": "executable_sol_per_token",
+          "value": "0.00000004",
+          "sellPercent": "25"
+        }
+      ],
+      "stop": {
+        "unit": "net_pnl_sol",
+        "value": "-0.005"
+      }
+    }
+  },
+  "database": "../data/tp3.sqlite"
+}

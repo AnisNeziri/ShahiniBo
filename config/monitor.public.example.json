@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "mode": "monitor",
+  "database": "../data/monitor-public.sqlite",
+  "capture": "../data/monitor-public-feed.jsonl",
+  "feed": {
+    "provider": "solana-public-launch-sampler",
+    "rpcEnv": "SOLANA_RPC_URL",
+    "wsEnv": "SOLANA_WS_URL",
+    "launchesOnly": true,
+    "maxQueue": 32,
+    "hydrationDeadlineMs": 4000
+  }
+}
